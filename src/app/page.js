@@ -1,15 +1,23 @@
+"use client"
 import React from 'react'
+import { useState } from 'react'
 
 const page = () => {
+  const [isOpen, setIsOpen] = useState('')
+
+  const toggleMenu = ()=>{
+    setIsOpen(!isOpen)
+  }
   return (
     <div>
       <div className='fixed top-0 left-0 w-full backdrop-blur-lg bg-white/10 border-b border-white/20 shadow-lg'>
-        <nav className='py-3 flex justify-between px-10 items-center'>
+        <nav className='md:py-3 py-1 flex justify-between px-10 items-center'>
       <div>
         <h4 className="text-white font-bold text-2xl">AY</h4>
       </div>
       <div className='md:hidden'>
-        <img src='images/ham.svg' width={38}></img>
+        <button onClick={toggleMenu}><img className='pt-2' src='images/ham.svg' width={33}></img></button>
+        
       </div>
       <ul className="hidden md:flex list-none gap-5 font-bold text-base  flex-column">
           <li ><a href='#home' className="text-white hover:text-gray-300">Home</a></li>
@@ -20,6 +28,18 @@ const page = () => {
         <div className='hidden md:block'>
           <button className='text-white border-2 py-0.5 border-white-600 rounded-4xl px-4 font-medium'>Sign In</button>
         </div>
+        {/* Mobile Menu - Visible Only When isOpen is True */}
+      {isOpen && (
+        <ul className="absolute top-14 right-10 w-50 bg-black/50 rounded-lg text-black flex flex-col items-center gap-3 p-4 md:hidden">
+          <li><a href="#home" className="text-white">Home</a></li>
+          <li><a href="#about" className="text-white">About us</a></li>
+          <li><a href="#services" className="text-white">Service</a></li>
+          <li><a href="#faq" className="text-white">FAQ</a></li>
+          <div className=''>
+          <button className='text-white border-2 py-0.5 border-white-600 rounded-4xl px-4 font-medium'>Sign In</button>
+        </div>
+        </ul>
+      )}
       </nav>
       </div>
       <section className="bg-cover bg-center h-screen" style={{backgroundImage:'linear-gradient(rgba(0, 0, 0, 0), rgba(0,0,0,0.5)), url(/images/sec.jpg)', backgroundRepeat:'no-repeat'}}>
