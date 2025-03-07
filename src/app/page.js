@@ -3,7 +3,7 @@ import React from 'react'
 import { useState } from 'react'
 import Image from 'next/image'
 
-const page = () => {
+const Page = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleMenu = ()=>{
@@ -54,4 +54,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
