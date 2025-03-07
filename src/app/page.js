@@ -1,9 +1,10 @@
 "use client"
 import React from 'react'
 import { useState } from 'react'
+import Image from 'next/image'
 
 const page = () => {
-  const [isOpen, setIsOpen] = useState('')
+  const [isOpen, setIsOpen] = useState(false)
 
   const toggleMenu = ()=>{
     setIsOpen(!isOpen)
@@ -16,7 +17,7 @@ const page = () => {
         <h4 className="text-white font-bold text-2xl">AY</h4>
       </div>
       <div className='md:hidden'>
-        <button onClick={toggleMenu}><img className='pt-2' src='images/ham.svg' width={33}></img></button>
+        <button onClick={toggleMenu}> <Image className='pt-2' src='images/ham.svg' alt='Description' width={33} height={0}/></button>
         
       </div>
       <ul className="hidden md:flex list-none gap-5 font-bold text-base  flex-column">
