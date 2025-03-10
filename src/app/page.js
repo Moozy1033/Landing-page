@@ -2,12 +2,17 @@
 import React from 'react'
 import { useState } from 'react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 const Page = () => {
+  const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleMenu = ()=>{
     setIsOpen(!isOpen)
+  }
+  const signin = ()=>{
+    router.push("/signin")
   }
   return (
     <div>
@@ -17,7 +22,7 @@ const Page = () => {
         <h4 className="text-white font-bold text-2xl">AY</h4>
       </div>
       <div className='md:hidden'>
-        <button onClick={toggleMenu}> <Image className='pt-2' src='images/ham.svg' alt='Description' width={33} height={0}/></button>
+        <button onClick={toggleMenu}> <Image className='pt-2' src='/images/ham.svg' alt='Description' width={33} height={0}/></button>
         
       </div>
       <ul className="hidden md:flex list-none gap-5 font-bold text-base  flex-column">
@@ -27,7 +32,7 @@ const Page = () => {
           <li ><a href='#home' className="text-white hover:text-gray-300">FAQ</a></li>
         </ul>
         <div className='hidden md:block'>
-          <button className='text-white border-2 py-0.5 border-white-600 rounded-4xl px-4 font-medium'>Sign In</button>
+          <button onClick={signin} className='text-white border-2 py-0.5 border-white-600 rounded-4xl px-4 font-medium'>Sign In</button>
         </div>
         {/* Mobile Menu - Visible Only When isOpen is True */}
       {isOpen && (
@@ -37,7 +42,7 @@ const Page = () => {
           <li><a href="#services" className="text-white">Service</a></li>
           <li><a href="#faq" className="text-white">FAQ</a></li>
           <div className=''>
-          <button className='text-white border-2 py-0.5 border-white-600 rounded-4xl px-4 font-medium'>Sign In</button>
+          <button onClick={signin} className='text-white border-2 py-0.5 border-white-600 rounded-4xl px-4 font-medium'>Sign In</button>
         </div>
         </ul>
       )}
