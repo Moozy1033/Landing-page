@@ -27,7 +27,7 @@ const Page = () => {
     const submit = (e) => {
         e.preventDefault()
         const storedUser = JSON.parse(localStorage.getItem('UserInfo'))
-        const { email, password } = storedUser
+        const { email, password, firstname } = storedUser
         // console.log(storedUser);
 
         if (!loginData.email || !loginData.password) {
@@ -39,7 +39,7 @@ const Page = () => {
             return
         } else {
             console.log("signed in successfully");
-            showSuccessToast('Signed in successfully')
+            showSuccessToast(`Welcome, ${firstname}! You have successfully signed in.`)
         }
 
     }
